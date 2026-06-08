@@ -7,50 +7,67 @@ public class CarController : MonoBehaviour
 
     public float turnSpeed;
 
-    private Vector3 moveVelocity;
+    public float turn;
+
+    public float grip;
 
     private Rigidbody rb;
 
     private void Start()
     {
-        moveVelocity = Vector3.one;
-
         rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
         // 速度
-        moveSpeed = 1f;
+        moveSpeed = 0.5f;
 
-        turnSpeed = 100f;
+        turnSpeed = 50f;
 
-        Debug.Log(transform.position);
+        turn = 0f;
+
+        // 位置情報
+        // Debug.Log(transform.position);
+
+        // 速度の大きさを取得
+        // Debug.Log(rb.linearVelocity.magnitude);
+
+        // 回転量取得
+        // Debug.Log(rb.angularVelocity.magnitude);
+
 
         // 前進
         if (Keyboard.current.wKey.isPressed)
         {
-            // transform.position += Vector3.back * moveSpeed * Time.deltaTime;
             rb.AddForce(transform.right * moveSpeed);
         }
 
-        // 後退
-        if (Keyboard.current.sKey.isPressed)
+        // 停止
+        if (Keyboard.current.spaceKey.isPressed)
         {
-            // transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
-            rb.AddForce(-transform.right * moveSpeed);
+            rb.linearVelocity *= 0.999f;
+            grip = 0.75f;
+        }
+        else
+        {
+            grip = 0.25f;
         }
 
         // 右
         if (Keyboard.current.dKey.isPressed)
         {
-            transform.Rotate(0, turnSpeed * Time.deltaTime, 0);
+            turn = 1.5f;
+            grip = 0.5f;
         }
 
         // 左
         if (Keyboard.current.aKey.isPressed)
         {
-            transform.Rotate(0, -turnSpeed * Time.deltaTime, 0);
+            turn = -1.5f;
+            grip = 0.5f;
         }
+
+        transform.Rotate(0, turn * turnSpeed * grip * Time.deltaTime, 0);
     }
 }
