@@ -18,27 +18,25 @@ public class CarController : MonoBehaviour
     // リジットボディの取得
     private Rigidbody rb;
 
-    // ドリフト判定
-    public bool isDrift;
-
-    // カーブ判定
-    // public bool isCurve;
+    // ブレーキ判定
+    public bool isBrake;
 
     private void Start()
     {
         // リジットボディの参照
         rb = GetComponent<Rigidbody>();
+
+        // 速度
+        moveSpeed = 0.5f;
+
+        // 回転速度
+        turnSpeed = 50f;
     }
 
     private void Update()
     {
-        // 速度
-        moveSpeed = 0.5f;
-
-        turnSpeed = 50f;
-
         // グリップの判定
-        if (isDrift)
+        if (isBrake)
         {
             grip = 0.5f;
         }
@@ -51,15 +49,15 @@ public class CarController : MonoBehaviour
         if (Keyboard.current.spaceKey.isPressed || Keyboard.current.ctrlKey.isPressed
             || Mouse.current.rightButton.isPressed)
         {
-            isDrift = true;
+            isBrake = true;
 
             // Vector3.Lerp(現在の値, 目標の値, 進む割合)
             // Lerpは間をとる AとBの間を少しずつ移動する つまり 0に向かって進む (減速していく)
-            rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, Vector3.zero, 0.5f * Time.deltaTime);
+            rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, Vector3.zero, 0.75f * Time.deltaTime);
         }
         else
         {
-            isDrift = false;
+            isBrake = false;
         }
 
         // 左右の操作
