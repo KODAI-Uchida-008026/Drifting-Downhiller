@@ -18,8 +18,11 @@ public class CarController : MonoBehaviour
     // リジットボディの取得
     private Rigidbody rb;
 
-    // ブレーキ判定
+    // ブレーキ判定 (厳密にはグリップの判定)
     public bool isBrake;
+
+    // ドリフト判定
+    public bool isDrift;
 
     private void Start()
     {
@@ -27,10 +30,7 @@ public class CarController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         // 速度
-        moveSpeed = 0.5f;
-
-        // 回転速度
-        turnSpeed = 50f;
+        moveSpeed = 2.5f;
     }
 
     private void Update()
@@ -38,11 +38,21 @@ public class CarController : MonoBehaviour
         // グリップの判定
         if (isBrake)
         {
-            grip = 0.5f;
+            grip = 0.75f;
         }
         else
         {
             grip = 0.25f;
+        }
+
+        // ドリフト判定
+        if (isDrift)
+        {
+            turnSpeed = 75f;
+        }
+        else
+        {
+            turnSpeed = 25f;
         }
 
         // 停止
@@ -53,7 +63,7 @@ public class CarController : MonoBehaviour
 
             // Vector3.Lerp(現在の値, 目標の値, 進む割合)
             // Lerpは間をとる AとBの間を少しずつ移動する つまり 0に向かって進む (減速していく)
-            rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, Vector3.zero, 0.75f * Time.deltaTime);
+            rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, Vector3.zero, 0.5f * Time.deltaTime);
         }
         else
         {
@@ -64,12 +74,12 @@ public class CarController : MonoBehaviour
         if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed
             || Keyboard.current.zKey.isPressed)
         {
-            turn = -1.5f;
+            turn = -1.75f;
         }
         else if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed
             || Keyboard.current.cKey.isPressed)
         {
-            turn = 1.5f;
+            turn = 1.75f;
         }
         else
         {
@@ -81,8 +91,23 @@ public class CarController : MonoBehaviour
             || Mouse.current.leftButton.isPressed || Keyboard.current.xKey.isPressed)
         {
             rb.AddForce(transform.right * moveSpeed);
+
+            if (isBrake == true)
+            {
+                isDrift = true;
+            }
+            else
+            {
+                isDrift = false;
+            }
+        }
+        else
+        {
+            // 加速中にブレーキした時だけ回転速度が上がる
+            isDrift = false;
         }
 
         transform.Rotate(0, turn * turnSpeed * grip * Time.deltaTime, 0);
+        // Debug.Log(rb.linearVelocity);
     }
 }
