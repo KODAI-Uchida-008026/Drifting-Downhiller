@@ -35,7 +35,7 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
-        // グリップの判定
+        // グリップ判定 (曲がりやすさ)
         if (isBrake)
         {
             grip = 0.75f;
@@ -45,7 +45,7 @@ public class CarController : MonoBehaviour
             grip = 0.25f;
         }
 
-        // ドリフト判定
+        // ドリフト判定 (曲がる勢い)
         if (isDrift)
         {
             turnSpeed = 50f;
@@ -55,9 +55,8 @@ public class CarController : MonoBehaviour
             turnSpeed = 25f;
         }
 
-        // 停止
-        if (Keyboard.current.spaceKey.isPressed || Keyboard.current.ctrlKey.isPressed
-            || Mouse.current.rightButton.isPressed)
+        // 停止 (減速)  ブレーキはスペースキーとマウスの右クリック
+        if (Keyboard.current.spaceKey.isPressed || Mouse.current.rightButton.isPressed)
         {
             isBrake = true;
 
@@ -70,14 +69,12 @@ public class CarController : MonoBehaviour
             isBrake = false;
         }
 
-        // 左右の操作
-        if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed
-            || Keyboard.current.zKey.isPressed)
+        // 左右の操作 Aキーと左　　Dキーと右
+        if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
         {
             turn = -2f;
         }
-        else if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed
-            || Keyboard.current.cKey.isPressed)
+        else if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
         {
             turn = 2f;
         }
@@ -86,12 +83,13 @@ public class CarController : MonoBehaviour
             turn = 0f;
         }
 
-        // 前進
-        if (Keyboard.current.wKey.isPressed || Keyboard.current.upArrowKey.isPressed
-            || Mouse.current.leftButton.isPressed || Keyboard.current.xKey.isPressed)
+        // 前進 (加速) Wキーと上
+        if (Keyboard.current.wKey.isPressed || Keyboard.current.upArrowKey.isPressed)
         {
+            // リジットボディの加速
             rb.AddForce(transform.right * moveSpeed);
 
+            // ドリフト判定
             if (isBrake == true)
             {
                 isDrift = true;
