@@ -30,7 +30,7 @@ public class CarController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         // 速度
-        moveSpeed = 2.5f;
+        moveSpeed = 3f;
     }
 
     private void Update()
