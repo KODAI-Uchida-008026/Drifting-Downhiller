@@ -30,7 +30,7 @@ public class CarController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         // 速度
-        moveSpeed = 3f;
+        moveSpeed = 5f;
     }
 
     private void Update()
@@ -48,7 +48,7 @@ public class CarController : MonoBehaviour
         // ドリフト判定
         if (isDrift)
         {
-            turnSpeed = 75f;
+            turnSpeed = 50f;
         }
         else
         {
@@ -74,12 +74,12 @@ public class CarController : MonoBehaviour
         if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed
             || Keyboard.current.zKey.isPressed)
         {
-            turn = -1.75f;
+            turn = -2f;
         }
         else if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed
             || Keyboard.current.cKey.isPressed)
         {
-            turn = 1.75f;
+            turn = 2f;
         }
         else
         {
@@ -107,7 +107,10 @@ public class CarController : MonoBehaviour
             isDrift = false;
         }
 
+        // ドリフトの動き
         transform.Rotate(0, turn * turnSpeed * grip * Time.deltaTime, 0);
-        // Debug.Log(rb.linearVelocity);
+
+        // 回転が過度に加速しないよう修正(直進のlinearVelocity同様 減速させる)
+        rb.angularVelocity *= 0.75f;
     }
 }
