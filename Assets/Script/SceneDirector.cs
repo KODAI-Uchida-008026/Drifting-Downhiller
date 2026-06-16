@@ -1,7 +1,10 @@
 using UnityEngine;
+// using UnityEngine.SceneManagement;
 
 
 public class SceneDirector : MonoBehaviour
 {
+
+    // SceneManager.LoadScene("GameScene");
 
 }

@@ -17,7 +17,6 @@ public class TimeManager : MonoBehaviour
 
     void Start()
     {
-        Timer = GetComponent<TextMeshProUGUI>();
         isPlaying = true;
     }
 
@@ -41,14 +40,14 @@ public class TimeManager : MonoBehaviour
         // 記録タイム
         newTime = this.time;
 
-        // タイム表示
-        Debug.Log("記録タイム： " + newTime.ToString("F1"));
-
         // データ保存
         PlayerPrefs.SetFloat("NewTime", newTime);
 
         // データセーブ
         PlayerPrefs.Save();
-        Debug.Log("セーブ完了");
+
+
+        // タイム表示
+        Debug.Log("記録タイム： " + newTime.ToString("F1"));
     }
 }

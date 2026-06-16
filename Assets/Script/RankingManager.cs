@@ -32,21 +32,27 @@ public class RankingManager : MonoBehaviour
         }
 
         // 個別で保持
-        resultTime = PlayerPrefs.GetFloat("NewTime");
+        resultTime = PlayerPrefs.GetFloat("NewTime", 999);
 
         // 並び替え
         ranks.Sort();
 
+        // ５位未満の記録を削除しておく　(6位から上位5つを除いた記録を削除する)
+        if (ranks.Count >= 5)
+        {
+            ranks.RemoveRange(5, ranks.Count - 5);
+        }
+
         // データ更新
         for (int i = 0; i < ranking.Length; i++)
         {
-            if (i <= ranks.Count)
+            if (ranks[i] == 999)
             {
-                ranking[i].text = ranks[i].ToString("F1");
+                ranking[i].text = "-----";
             }
             else
             {
-                ranking[i].text = "-----";
+                ranking[i].text = ranks[i].ToString("F1");
             }
         }
 
@@ -64,11 +70,11 @@ public class RankingManager : MonoBehaviour
         ranks.Clear();
 
         // リストに追加していく　(左が無ければ右が出てくる)
-        ranks.Add(PlayerPrefs.GetFloat("First", -999));
-        ranks.Add(PlayerPrefs.GetFloat("Second", -999));
-        ranks.Add(PlayerPrefs.GetFloat("Third", -999));
-        ranks.Add(PlayerPrefs.GetFloat("Fourth", -999));
-        ranks.Add(PlayerPrefs.GetFloat("Fifth", -999));
+        ranks.Add(PlayerPrefs.GetFloat("First", 999));
+        ranks.Add(PlayerPrefs.GetFloat("Second", 999));
+        ranks.Add(PlayerPrefs.GetFloat("Third", 999));
+        ranks.Add(PlayerPrefs.GetFloat("Fourth", 999));
+        ranks.Add(PlayerPrefs.GetFloat("Fifth", 999));
     }
 
     // 記録保持
