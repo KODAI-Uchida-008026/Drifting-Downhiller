@@ -7,7 +7,7 @@ public class TimeManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI Timer;
 
     // 時間判定
-    [SerializeField] private bool isPlaying;
+    private bool isPlaying;
 
     // 記録タイム
     private float newTime;

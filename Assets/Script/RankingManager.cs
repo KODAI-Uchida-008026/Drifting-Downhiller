@@ -14,7 +14,7 @@ public class RankingManager : MonoBehaviour
     List<float> ranks = new List<float>();
 
     // 最新記録
-    [SerializeField] private float resultTime;
+    private float resultTime;
 
     private void Start()
     {
@@ -31,7 +31,7 @@ public class RankingManager : MonoBehaviour
             Your.text = "-----";
         }
 
-        // 個別で保持
+        // 個別で保持　(左が無ければ右が出てくる)
         resultTime = PlayerPrefs.GetFloat("NewTime", 999);
 
         // 並び替え
