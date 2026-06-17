@@ -19,7 +19,7 @@ public class RankingManager : MonoBehaviour
     private void Start()
     {
         // セーブデータの読み込み
-        SaveLoad();
+        PrefsLoad();
 
         // 今回の記録
         if (PlayerPrefs.HasKey("NewTime"))
@@ -64,7 +64,7 @@ public class RankingManager : MonoBehaviour
     }
 
     // セーブデータの読み込み
-    void SaveLoad()
+    void PrefsLoad()
     {
         // クリアしてから読み込む
         ranks.Clear();

@@ -6,14 +6,14 @@ public class TimeManager : MonoBehaviour
     // ゲームオブジェクトの参照 (アサイン)
     [SerializeField] TextMeshProUGUI Timer;
 
-    // 時間
-    public float time = 0.0f;
+    // 時間判定
+    [SerializeField] private bool isPlaying;
 
     // 記録タイム
     public float newTime;
 
-    // 時間判定
-    [SerializeField] private bool isPlaying;
+    // 時間
+    public float time = 0.0f;
 
     void Start()
     {
