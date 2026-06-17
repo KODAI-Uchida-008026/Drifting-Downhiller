@@ -10,7 +10,7 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private bool isPlaying;
 
     // 記録タイム
-    public float newTime;
+    private float newTime;
 
     // 時間
     public float time = 0.0f;

@@ -72,11 +72,11 @@ public class CarController : MonoBehaviour
         // 左右の操作 Aキーと左　　Dキーと右
         if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
         {
-            turn = -2.25f;
+            turn = -2f;
         }
         else if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
         {
-            turn = 2.25f;
+            turn = 2f;
         }
         else
         {
