@@ -30,7 +30,7 @@ public class CarController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         // 速度
-        moveSpeed = 5f;
+        moveSpeed = 3f;
     }
 
     private void Update()
@@ -72,11 +72,11 @@ public class CarController : MonoBehaviour
         // 左右の操作 Aキーと左　　Dキーと右
         if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
         {
-            turn = -2f;
+            turn = -2.25f;
         }
         else if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
         {
-            turn = 2f;
+            turn = 2.25f;
         }
         else
         {
