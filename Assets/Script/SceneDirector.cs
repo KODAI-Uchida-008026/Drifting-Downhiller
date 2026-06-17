@@ -4,17 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneDirector : MonoBehaviour
 {
-    // 車の取得
-    [SerializeField] GameObject car;
-
     // 追従カメラを取得
     [SerializeField] GameObject followCam;
 
     // 練習シーンであるか確認
     private bool isPractice;
 
-
-    private void OnTriggerEnter(Collider collider)
+    public void OnTriggerEnter(Collider collider)
     {
         // ゴールラインでの判定
         if (collider.CompareTag("Change"))
@@ -23,7 +19,9 @@ public class SceneDirector : MonoBehaviour
             followCam.SetActive(false);
 
             // 車の位置変更
-            car.transform.localPosition = new Vector3(-8, 2, 40);
+            transform.localPosition = new Vector3(-8, 2, 40);
+
+            // Debug.Log(" Trigger on");
         }
         else if (collider.CompareTag("Finish"))
         {
@@ -47,7 +45,7 @@ public class SceneDirector : MonoBehaviour
             followCam.SetActive(true);
 
             // 車の位置変更
-            car.transform.localPosition = new Vector3(-58, 2, -50);
+            transform.localPosition = new Vector3(-58, 2, -50);
         }
         else if (isPractice && Keyboard.current.oKey.wasPressedThisFrame)
         {
@@ -55,7 +53,7 @@ public class SceneDirector : MonoBehaviour
             followCam.SetActive(false);
 
             // 車の位置変更
-            car.transform.localPosition = new Vector3(-8, 2, 40);
+            transform.localPosition = new Vector3(-8, 2, 40);
         }
         else if (isPractice && Keyboard.current.iKey.wasPressedThisFrame)
         {
