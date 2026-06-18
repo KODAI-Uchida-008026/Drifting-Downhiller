@@ -7,11 +7,18 @@ public class SceneDirector : MonoBehaviour
     // 追従カメラを取得
     [SerializeField] GameObject followCam;
 
+    // パネルの取得
+    [SerializeField] GameObject panel;
+
     // TimeManageの取得
     [SerializeField] TimeManager tm;
 
     // 練習シーンであるか確認
     private bool isPractice;
+
+    // ボタンクリックで選択画面へ
+
+    // ボタンクリックで練習シーンへ
 
     public void OnTriggerEnter(Collider collider)
     {
@@ -29,6 +36,9 @@ public class SceneDirector : MonoBehaviour
         }
         else if (collider.CompareTag("Finish"))
         {
+            // タイムアタック終了
+            tm.timerStop();
+
             // リザルト画面へシーン遷移
             SceneManager.LoadScene("ResultScene");
         }
@@ -69,7 +79,10 @@ public class SceneDirector : MonoBehaviour
         else if (isPractice && Keyboard.current.iKey.wasPressedThisFrame)
         {
             // Iキーを押すとタイムアタック本番を始めるかの確認
-            Debug.Log("ボタン表示");
+            panel.SetActive(!panel.activeSelf);
+            // activeSelfは現在の状態　これを! 否定するため もう一度押せば消せる
+
+            // Debug.Log("ボタン表示");
         }
     }
 }
