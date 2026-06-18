@@ -50,4 +50,23 @@ public class TimeManager : MonoBehaviour
         // タイム表示
         Debug.Log("記録タイム： " + newTime.ToString("F1"));
     }
+
+    public void timerPause()
+    {
+        // 一時停止
+        isPlaying = false;
+    }
+
+    public void timerReset()
+    {
+        // タイマーリセット
+        if (isPlaying == false)
+        {
+            // 条件付けしないとずっと0になる
+            this.time = 00.0f;
+        }
+
+        // タイマー再開
+        isPlaying = true;
+    }
 }

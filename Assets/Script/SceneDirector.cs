@@ -7,6 +7,9 @@ public class SceneDirector : MonoBehaviour
     // 追従カメラを取得
     [SerializeField] GameObject followCam;
 
+    // TimeManageの取得
+    [SerializeField] TimeManager tm;
+
     // 練習シーンであるか確認
     private bool isPractice;
 
@@ -19,9 +22,10 @@ public class SceneDirector : MonoBehaviour
             followCam.SetActive(false);
 
             // 車の位置変更
-            transform.localPosition = new Vector3(-8, 2, 40);
+            transform.position = new Vector3(-8, 2, 40);
 
-            // Debug.Log(" Trigger on");
+            // タイマーストップ
+            tm.timerPause();
         }
         else if (collider.CompareTag("Finish"))
         {
@@ -45,20 +49,27 @@ public class SceneDirector : MonoBehaviour
             followCam.SetActive(true);
 
             // 車の位置変更
-            transform.localPosition = new Vector3(-58, 2, -50);
+            transform.position = new Vector3(-58, 2, -50);
+            transform.rotation = Quaternion.identity;
+
+            // コース練習に戻ればタイマー再開
+            tm.timerReset();
         }
         else if (isPractice && Keyboard.current.oKey.wasPressedThisFrame)
         {
             // Oキーを押すとフリースペースへ移動
             followCam.SetActive(false);
 
-            // 車の位置変更
-            transform.localPosition = new Vector3(-8, 2, 40);
+            // 車の位置変更 (向きも直す)
+            transform.position = new Vector3(-8, 2, 40);
+
+            // タイマー停止
+            tm.timerPause();
         }
         else if (isPractice && Keyboard.current.iKey.wasPressedThisFrame)
         {
-            // タイムアタック本番を始めるかの確認
-
+            // Iキーを押すとタイムアタック本番を始めるかの確認
+            Debug.Log("ボタン表示");
         }
     }
 }
