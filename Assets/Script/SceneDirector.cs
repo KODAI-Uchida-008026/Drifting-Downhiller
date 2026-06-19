@@ -16,9 +16,9 @@ public class SceneDirector : MonoBehaviour
     // 練習シーンであるか確認
     private bool isPractice;
 
-    // ボタンクリックで選択画面へ
+    // ボタンクリックでタイトルから選択画面へ
 
-    // ボタンクリックで練習シーンへ
+    // ボタンクリックで選択画面から練習シーンへ
 
     public void OnTriggerEnter(Collider collider)
     {
@@ -48,6 +48,9 @@ public class SceneDirector : MonoBehaviour
     {
         // 練習シーンを毎回呼び出さないようここで代入
         isPractice = SceneManager.GetActiveScene().name == "PracticeScene";
+
+        // コルーチンでリザルト画面からタイトルに戻る
+
     }
 
     private void Update()
@@ -81,8 +84,6 @@ public class SceneDirector : MonoBehaviour
             // Iキーを押すとタイムアタック本番を始めるかの確認
             panel.SetActive(!panel.activeSelf);
             // activeSelfは現在の状態　これを! 否定するため もう一度押せば消せる
-
-            // Debug.Log("ボタン表示");
         }
     }
 }
