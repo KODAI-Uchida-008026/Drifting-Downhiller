@@ -16,10 +16,6 @@ public class SceneDirector : MonoBehaviour
     // 練習シーンであるか確認
     private bool isPractice;
 
-    // ボタンクリックでタイトルから練習シーンへ
-    // シーン遷移してからカラー選択のゲットint
-
-
     public void OnTriggerEnter(Collider collider)
     {
         // ゴールラインでの判定
@@ -55,6 +51,14 @@ public class SceneDirector : MonoBehaviour
 
     private void Update()
     {
+        // タイトルシーンでエンターキーを押すと練習シーンへ遷移
+        if (SceneManager.GetActiveScene().name == "TitleScene"
+            && Keyboard.current.enterKey.wasPressedThisFrame)
+        {
+            SceneManager.LoadScene("PracticeScene");
+        }
+
+
         // Pキーを押すと再度コース練習
         if (isPractice && Keyboard.current.pKey.wasPressedThisFrame)
         {
@@ -83,7 +87,7 @@ public class SceneDirector : MonoBehaviour
         {
             // Iキーを押すとタイムアタック本番を始めるかの確認
             panel.SetActive(!panel.activeSelf);
-            // activeSelfは現在の状態　これを! 否定するため もう一度押せば消せる
+            // activeSelfは現在の状態　これを!で否定するため もう一度押せば消せる
         }
     }
 }

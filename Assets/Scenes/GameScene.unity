@@ -4397,6 +4397,31 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9135175177694170826, guid: 0bf0cc07c87c77849a09963b1239792e, type: 3}
   m_PrefabInstance: {fileID: 2236210346608340560}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1074857483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074857478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca5fcf15d76a0c14daad8d4ba00421c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ColorSettings
+  carRenderer:
+  - {fileID: 2236210346608340570}
+  - {fileID: 2236210346608340569}
+  - {fileID: 2236210346608340568}
+  - {fileID: 2236210346608340567}
+  - {fileID: 2236210346608340566}
+  - {fileID: 2236210346608340565}
+  tireRenderer:
+  - {fileID: 2236210346608340564}
+  - {fileID: 2236210346608340563}
+  - {fileID: 2236210346608340562}
+  - {fileID: 2236210346608340561}
+  currentColor: 0
 --- !u!1 &1105253793
 GameObject:
   m_ObjectHideFlags: 0
@@ -9078,7 +9103,60 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4046606790500971416, guid: 0bf0cc07c87c77849a09963b1239792e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1074857481}
+    - targetCorrespondingSourceObject: {fileID: 4046606790500971416, guid: 0bf0cc07c87c77849a09963b1239792e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1074857483}
   m_SourcePrefab: {fileID: 100100000, guid: 0bf0cc07c87c77849a09963b1239792e, type: 3}
+--- !u!23 &2236210346608340561 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6560168335276259708, guid: 0bf0cc07c87c77849a09963b1239792e, type: 3}
+  m_PrefabInstance: {fileID: 2236210346608340560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2236210346608340562 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8182424655755943662, guid: 0bf0cc07c87c77849a09963b1239792e, type: 3}
+  m_PrefabInstance: {fileID: 2236210346608340560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2236210346608340563 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 9092967031168488952, guid: 0bf0cc07c87c77849a09963b1239792e, type: 3}
+  m_PrefabInstance: {fileID: 2236210346608340560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2236210346608340564 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 9150624871835628909, guid: 0bf0cc07c87c77849a09963b1239792e, type: 3}
+  m_PrefabInstance: {fileID: 2236210346608340560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2236210346608340565 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5684712923901076310, guid: 0bf0cc07c87c77849a09963b1239792e, type: 3}
+  m_PrefabInstance: {fileID: 2236210346608340560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2236210346608340566 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4908719964327196137, guid: 0bf0cc07c87c77849a09963b1239792e, type: 3}
+  m_PrefabInstance: {fileID: 2236210346608340560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2236210346608340567 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2824105392301124699, guid: 0bf0cc07c87c77849a09963b1239792e, type: 3}
+  m_PrefabInstance: {fileID: 2236210346608340560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2236210346608340568 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2980741071785611335, guid: 0bf0cc07c87c77849a09963b1239792e, type: 3}
+  m_PrefabInstance: {fileID: 2236210346608340560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2236210346608340569 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2636228767265633084, guid: 0bf0cc07c87c77849a09963b1239792e, type: 3}
+  m_PrefabInstance: {fileID: 2236210346608340560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2236210346608340570 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 458434690881855242, guid: 0bf0cc07c87c77849a09963b1239792e, type: 3}
+  m_PrefabInstance: {fileID: 2236210346608340560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -9087,9 +9165,9 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 416340856}
-  - {fileID: 2236210346608340560}
   - {fileID: 1275614637}
   - {fileID: 286000349}
   - {fileID: 1891200730}
   - {fileID: 3092499}
+  - {fileID: 2236210346608340560}
   - {fileID: 1265013566}

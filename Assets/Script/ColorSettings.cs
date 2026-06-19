@@ -47,9 +47,12 @@ public class ColorSettings : MonoBehaviour
 
     private void Update()
     {
-        // タイトル画面以外ではカラー選択ができないように制限
+        // タイトル画面でないなら変更できないように制限して選択済みカラーを取得させる
         if (SceneManager.GetActiveScene().name != "TitleScene")
+        {
+            PlayerPrefs.GetInt("SelectColor", (int)currentColor);
             return;
+        }
 
         // 右で昇順 (→ D)    左で降順 (← A)
         if (Keyboard.current.rightArrowKey.wasPressedThisFrame || Keyboard.current.dKey.wasPressedThisFrame)
