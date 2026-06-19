@@ -16,9 +16,9 @@ public class SceneDirector : MonoBehaviour
     // 練習シーンであるか確認
     private bool isPractice;
 
-    // ボタンクリックでタイトルから選択画面へ
+    // ボタンクリックでタイトルから練習シーンへ
+    // シーン遷移してからカラー選択のゲットint
 
-    // ボタンクリックで選択画面から練習シーンへ
 
     public void OnTriggerEnter(Collider collider)
     {

@@ -19,16 +19,14 @@ public enum CarColor
 public class ColorSettings : MonoBehaviour
 {
     // レンダラーの参照
-    [SerializeField] private Renderer carRenderer;
+    [SerializeField] private Renderer[] carRenderer;
+    [SerializeField] private Renderer[] tireRenderer;
 
     // 選択中のカラー選択
-    [SerializeField] private static CarColor currentColor;
+    [SerializeField] private CarColor currentColor;
 
     // カラー選択リスト
     private List<Color> colors;
-
-    // シーンチェック
-    private bool titleCheck;
 
     private void Start()
     {
@@ -51,9 +49,7 @@ public class ColorSettings : MonoBehaviour
     {
         // タイトル画面以外ではカラー選択ができないように制限
         if (SceneManager.GetActiveScene().name != "TitleScene")
-        {
             return;
-        }
 
         // 右で昇順 (→ D)    左で降順 (← A)
         if (Keyboard.current.rightArrowKey.wasPressedThisFrame || Keyboard.current.dKey.wasPressedThisFrame)
@@ -65,6 +61,8 @@ public class ColorSettings : MonoBehaviour
             // 同時に動かないようにelse if
             PreviousSelection();
         }
+
+        PlayerPrefs.SetInt("SelectColor", (int)currentColor);
     }
 
     // カラー選択設定
@@ -74,7 +72,16 @@ public class ColorSettings : MonoBehaviour
         int index = (int)currentColor;
 
         // マテリアルに反映してカラーリング変更
-        carRenderer.material.color = colors[index];
+        foreach (Renderer ren in carRenderer)
+        {
+            ren.material.color = colors[index];
+        }
+
+        // タイヤだけは常に黒色に設定
+        foreach (Renderer tire in tireRenderer)
+        {
+            tire.material.color = Color.black;
+        }
     }
 
     // 次の選択
