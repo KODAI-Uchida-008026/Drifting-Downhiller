@@ -1379,9 +1379,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c325cbb53b3e3048a8e9ae1152787ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneDirector
+  tm: {fileID: 712071849}
+  colorSet: {fileID: 1074857484}
   followCam: {fileID: 1891200727}
   panel: {fileID: 1474047618}
-  tm: {fileID: 712071849}
 --- !u!114 &1074857484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1489,7 +1490,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1124928976}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1074857483}
+        m_TargetAssemblyTypeName: SceneDirector, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1124928976
 MonoBehaviour:
   m_ObjectHideFlags: 0

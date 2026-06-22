@@ -435,9 +435,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c325cbb53b3e3048a8e9ae1152787ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneDirector
+  tm: {fileID: 0}
+  colorSet: {fileID: 23669446}
   followCam: {fileID: 0}
   panel: {fileID: 0}
-  tm: {fileID: 0}
 --- !u!1 &252172992
 GameObject:
   m_ObjectHideFlags: 0

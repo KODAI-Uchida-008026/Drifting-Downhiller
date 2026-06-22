@@ -98,11 +98,12 @@ public class ColorSettings : MonoBehaviour
         }
     }
 
-    // カラー保存と削除
-    public void SaveColor()
+    // カラーの削除
+    public void ColorReset()
     {
-        // 保存されたものを別のスクリプトに移転
-        // 削除をまとめて管理できなければ別のメソッドを作る
+        // カラー設定の削除と保存
+        PlayerPrefs.DeleteKey("SelectColor");
+        PlayerPrefs.Save();
     }
 
     // 次の選択

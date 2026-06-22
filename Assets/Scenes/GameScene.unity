@@ -4422,6 +4422,22 @@ MonoBehaviour:
   - {fileID: 2236210346608340562}
   - {fileID: 2236210346608340561}
   currentColor: 0
+--- !u!114 &1074857484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074857478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c325cbb53b3e3048a8e9ae1152787ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneDirector
+  tm: {fileID: 712071849}
+  colorSet: {fileID: 1074857483}
+  followCam: {fileID: 0}
+  panel: {fileID: 0}
 --- !u!1 &1105253793
 GameObject:
   m_ObjectHideFlags: 0
@@ -9106,6 +9122,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4046606790500971416, guid: 0bf0cc07c87c77849a09963b1239792e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1074857483}
+    - targetCorrespondingSourceObject: {fileID: 4046606790500971416, guid: 0bf0cc07c87c77849a09963b1239792e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1074857484}
   m_SourcePrefab: {fileID: 100100000, guid: 0bf0cc07c87c77849a09963b1239792e, type: 3}
 --- !u!23 &2236210346608340561 stripped
 MeshRenderer:

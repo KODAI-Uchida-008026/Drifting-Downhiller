@@ -4,14 +4,17 @@ using UnityEngine.SceneManagement;
 
 public class SceneDirector : MonoBehaviour
 {
+    // TimeManageの取得
+    [SerializeField] TimeManager tm;
+
+    // カラー設定のリセット
+    [SerializeField] ColorSettings colorSet;
+
     // 追従カメラを取得
     [SerializeField] GameObject followCam;
 
     // パネルの取得
     [SerializeField] GameObject panel;
-
-    // TimeManageの取得
-    [SerializeField] TimeManager tm;
 
     // 練習シーンであるか確認
     private bool isPractice;
@@ -40,6 +43,12 @@ public class SceneDirector : MonoBehaviour
         }
     }
 
+    public void OnButtonClick()
+    {
+        // ゲームシーンへ遷移
+        SceneManager.LoadScene("GameScene");
+    }
+
     private void Start()
     {
         // 練習シーンを毎回呼び出さないようここで代入
@@ -47,6 +56,8 @@ public class SceneDirector : MonoBehaviour
 
         // コルーチンでリザルト画面からタイトルに戻る
 
+        // カラーの削除してからシーン遷移
+        // colorSet.ColorReset();
     }
 
     private void Update()
