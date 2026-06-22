@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -16,8 +17,32 @@ public class RankingManager : MonoBehaviour
     // 最新記録
     private float resultTime;
 
+    [Serializable]
+    public class SaveData
+    {
+        public List<float> ranks;
+    }
+
     private void Start()
     {
+        // JSONのセーブデータクラス
+        SaveData data = new SaveData();
+
+        // JSONのデータの中にリスト代入
+        data.ranks = ranks;
+
+        // データをJSON文字列に変換する
+        string json = JsonUtility.ToJson(data);
+
+        // JSONデータの読み込み
+        SaveData save = JsonUtility.FromJson<SaveData>(json);
+
+        // リストにセーブデータを代入
+        ranks = save.ranks;
+
+
+        // 以下が今までのもの
+
         // セーブデータの読み込み
         PrefsLoad();
 
@@ -89,4 +114,6 @@ public class RankingManager : MonoBehaviour
         // 保存
         PlayerPrefs.Save();
     }
+
+
 }
