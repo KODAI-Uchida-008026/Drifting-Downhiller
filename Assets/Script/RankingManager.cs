@@ -34,14 +34,7 @@ public class RankingManager : MonoBehaviour
         // データをJSON文字列に変換する
         string json = JsonUtility.ToJson(data);
 
-        // JSONデータの読み込み
-        SaveData save = JsonUtility.FromJson<SaveData>(json);
-
-        // リストにセーブデータを代入
-        ranks = save.ranks;
-
-
-        // 以下が今までのもの
+        Debug.Log(json);
 
         // セーブデータの読み込み
         PrefsLoad();
@@ -81,6 +74,16 @@ public class RankingManager : MonoBehaviour
             }
         }
 
+
+
+        // JSONデータの読み込み
+        // SaveData save = JsonUtility.FromJson<SaveData>(json);
+
+        // リストにセーブデータを代入
+        // ranks = save.ranks;
+
+        // Debug.Log(json);
+
         // 記録保持
         RankSave();
 
@@ -100,6 +103,7 @@ public class RankingManager : MonoBehaviour
         ranks.Add(PlayerPrefs.GetFloat("Third", 999));
         ranks.Add(PlayerPrefs.GetFloat("Fourth", 999));
         ranks.Add(PlayerPrefs.GetFloat("Fifth", 999));
+
     }
 
     // 記録保持
