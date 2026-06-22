@@ -25,6 +25,9 @@ public class RankingManager : MonoBehaviour
 
     private void Start()
     {
+        // セーブデータの読み込み
+        PrefsLoad();
+
         // JSONのセーブデータクラス
         SaveData data = new SaveData();
 
@@ -35,9 +38,6 @@ public class RankingManager : MonoBehaviour
         string json = JsonUtility.ToJson(data);
 
         Debug.Log(json);
-
-        // セーブデータの読み込み
-        PrefsLoad();
 
         // 今回の記録
         if (PlayerPrefs.HasKey("NewTime"))
