@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 
@@ -26,18 +27,12 @@ public class RankingManager : MonoBehaviour
     private void Start()
     {
         // セーブデータの読み込み
-        PrefsLoad();
+        // PrefsLoad();
+        DataLoad();
 
-        // JSONのセーブデータクラス
-        SaveData data = new SaveData();
 
-        // JSONのデータの中にリスト代入
-        data.ranks = ranks;
 
-        // データをJSON文字列に変換する
-        string json = JsonUtility.ToJson(data);
 
-        Debug.Log(json);
 
         // 今回の記録
         if (PlayerPrefs.HasKey("NewTime"))
@@ -76,19 +71,60 @@ public class RankingManager : MonoBehaviour
 
 
 
-        // JSONデータの読み込み
-        // SaveData save = JsonUtility.FromJson<SaveData>(json);
-
-        // リストにセーブデータを代入
-        // ranks = save.ranks;
-
-        // Debug.Log(json);
-
         // 記録保持
-        RankSave();
+        // RankSave();
+        DataSave();
 
         // 今回の記録
         Your.text = resultTime.ToString("F1");
+    }
+
+    void DataSave()
+    {
+        // JSONのセーブデータクラス
+        SaveData data = new SaveData();
+
+        // JSONのデータの中にリスト代入
+        data.ranks = ranks;
+
+        // データをJSON文字列に変換する
+        string json = JsonUtility.ToJson(data, true);
+
+        string path = Application.persistentDataPath + "/save.json";
+
+        File.WriteAllText(path, json);
+
+        Debug.Log(json);
+    }
+
+    void DataLoad()
+    {
+        string path = Application.persistentDataPath + "/save.json";
+
+        // File.Existsで初回クラッシュ対策
+        if (File.Exists(path))
+        {
+            // JSON読み込み
+            string saveJson = File.ReadAllText(path);
+
+            // データに変換
+            SaveData save = JsonUtility.FromJson<SaveData>(saveJson);
+
+            // リストに代入
+            ranks = save.ranks;
+        }
+        else
+        {
+            // データが無ければ表示なし
+            ranks = new List<float>()
+            {
+                999,
+                999,
+                999,
+                999,
+                999
+            };
+        }
     }
 
     // セーブデータの読み込み
