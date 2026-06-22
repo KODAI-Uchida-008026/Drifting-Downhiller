@@ -42,6 +42,20 @@ public class ColorSettings : MonoBehaviour
             Color.yellow,
             Color.black
         };
+
+
+        // 保存されたカラーがあれば取得　無ければ白色
+        if (PlayerPrefs.HasKey("SelectColor"))
+        {
+            currentColor = (CarColor)PlayerPrefs.GetInt("SelectColor");
+        }
+        else
+        {
+            // ゲーム起動時だけ白色
+            currentColor = CarColor.White;
+        }
+
+        // カラー反映
         ColorSelection();
     }
 
@@ -49,10 +63,7 @@ public class ColorSettings : MonoBehaviour
     {
         // タイトル画面でないなら変更できないように制限して選択済みカラーを取得させる
         if (SceneManager.GetActiveScene().name != "TitleScene")
-        {
-            PlayerPrefs.GetInt("SelectColor", (int)currentColor);
             return;
-        }
 
         // 右で昇順 (→ D)    左で降順 (← A)
         if (Keyboard.current.rightArrowKey.wasPressedThisFrame || Keyboard.current.dKey.wasPressedThisFrame)
@@ -85,6 +96,13 @@ public class ColorSettings : MonoBehaviour
         {
             tire.material.color = Color.black;
         }
+    }
+
+    // カラー保存と削除
+    public void SaveColor()
+    {
+        // 保存されたものを別のスクリプトに移転
+        // 削除をまとめて管理できなければ別のメソッドを作る
     }
 
     // 次の選択
