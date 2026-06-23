@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -54,10 +55,14 @@ public class SceneDirector : MonoBehaviour
         // 練習シーンを毎回呼び出さないようここで代入
         isPractice = SceneManager.GetActiveScene().name == "PracticeScene";
 
-        // コルーチンでリザルト画面からタイトルに戻る
+        if (SceneManager.GetActiveScene().name == "ResultScene")
+        {
+            // カラー選択の削除
+            PlayerPrefs.DeleteKey("SelectColor");
 
-        // カラーの削除してからシーン遷移
-        // colorSet.ColorReset();
+            // コルーチンでリザルト画面からタイトルに戻る
+            StartCoroutine(EndingCoroutine());
+        }
     }
 
     private void Update()
@@ -68,7 +73,6 @@ public class SceneDirector : MonoBehaviour
         {
             SceneManager.LoadScene("PracticeScene");
         }
-
 
         // Pキーを押すと再度コース練習
         if (isPractice && Keyboard.current.pKey.wasPressedThisFrame)
@@ -100,5 +104,12 @@ public class SceneDirector : MonoBehaviour
             panel.SetActive(!panel.activeSelf);
             // activeSelfは現在の状態　これを!で否定するため もう一度押せば消せる
         }
+    }
+
+    private IEnumerator EndingCoroutine()
+    {
+        // 15秒経過したらタイトル画面に戻る
+        yield return new WaitForSeconds(15);
+        SceneManager.LoadScene("TitleScene");
     }
 }
