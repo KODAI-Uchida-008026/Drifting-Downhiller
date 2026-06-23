@@ -55,6 +55,7 @@ public class SceneDirector : MonoBehaviour
         // 練習シーンを毎回呼び出さないようここで代入
         isPractice = SceneManager.GetActiveScene().name == "PracticeScene";
 
+        // ランキングからタイトルシーンへ戻る
         if (SceneManager.GetActiveScene().name == "ResultScene")
         {
             // カラー選択の削除

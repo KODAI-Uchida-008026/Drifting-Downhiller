@@ -12,6 +12,11 @@ public class RankingManager : MonoBehaviour
     // プレイヤーの記録
     public TextMeshProUGUI Your;
 
+
+    // インプットフィールドの参照
+    public TMP_InputField nameInput;
+
+
     // 最新記録の保存
     private float resultTime;
 

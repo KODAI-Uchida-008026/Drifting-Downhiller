@@ -858,6 +858,7 @@ GameObject:
   - component: {fileID: 541535438}
   - component: {fileID: 541535437}
   - component: {fileID: 541535440}
+  - component: {fileID: 541535441}
   m_Layer: 0
   m_Name: Ranking
   m_TagString: Untagged
@@ -956,6 +957,22 @@ MonoBehaviour:
   - {fileID: 1660938514}
   - {fileID: 457848501}
   Your: {fileID: 1036548137}
+--- !u!114 &541535441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541535436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c325cbb53b3e3048a8e9ae1152787ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneDirector
+  tm: {fileID: 0}
+  colorSet: {fileID: 0}
+  followCam: {fileID: 0}
+  panel: {fileID: 0}
 --- !u!1 &726290634
 GameObject:
   m_ObjectHideFlags: 0
