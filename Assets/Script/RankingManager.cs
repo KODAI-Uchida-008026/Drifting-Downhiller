@@ -18,8 +18,8 @@ public class RankingManager : MonoBehaviour
     // 最新記録
     private float resultTime;
 
-    [Serializable]
-    public class SaveData
+    [Serializable]  // JSONでのデータ管理
+    public class SaveList
     {
         public List<float> ranks;
     }
@@ -27,21 +27,12 @@ public class RankingManager : MonoBehaviour
     private void Start()
     {
         // セーブデータの読み込み
-        // PrefsLoad();
         DataLoad();
-
-
-
-
 
         // 今回の記録
         if (PlayerPrefs.HasKey("NewTime"))
         {
             ranks.Add(PlayerPrefs.GetFloat("NewTime"));
-        }
-        else
-        {
-            Your.text = "-----";
         }
 
         // 個別で保持　(左が無ければ右が出てくる)
@@ -51,7 +42,7 @@ public class RankingManager : MonoBehaviour
         ranks.Sort();
 
         // ５位未満の記録を削除しておく　(6位から上位5つを除いた記録を削除する)
-        if (ranks.Count >= 5)
+        if (ranks.Count > 5)
         {
             ranks.RemoveRange(5, ranks.Count - 5);
         }
@@ -69,20 +60,29 @@ public class RankingManager : MonoBehaviour
             }
         }
 
+        // NewTimeの削除 (resultTimeには残っている)
+        PlayerPrefs.DeleteKey("NewTime");
 
+        // 最新記録の確認
+        if (resultTime == 999)
+        {
+            // 記録が無ければ表示なし
+            Your.text = "-----";
+        }
+        else
+        {
+            // 今回の記録を表示
+            Your.text = resultTime.ToString("F1");
+        }
 
         // 記録保持
-        // RankSave();
         DataSave();
-
-        // 今回の記録
-        Your.text = resultTime.ToString("F1");
     }
 
     void DataSave()
     {
         // JSONのセーブデータクラス
-        SaveData data = new SaveData();
+        SaveList data = new SaveList();
 
         // JSONのデータの中にリスト代入
         data.ranks = ranks;
@@ -90,25 +90,32 @@ public class RankingManager : MonoBehaviour
         // データをJSON文字列に変換する
         string json = JsonUtility.ToJson(data, true);
 
+        // 保存先はUnityが管理してくれる
         string path = Application.persistentDataPath + "/save.json";
 
+        // WriteAllだから書き込んで出力
         File.WriteAllText(path, json);
 
+        // 確認
         Debug.Log(json);
     }
 
     void DataLoad()
     {
+        // Unityが作成してくれる保存管理先の確認用データパス
         string path = Application.persistentDataPath + "/save.json";
+
+        // パスの確認
+        Debug.Log(path);
 
         // File.Existsで初回クラッシュ対策
         if (File.Exists(path))
         {
-            // JSON読み込み
-            string saveJson = File.ReadAllText(path);
+            // ReadAllだから読み込んで入力
+            string saveData = File.ReadAllText(path);
 
             // データに変換
-            SaveData save = JsonUtility.FromJson<SaveData>(saveJson);
+            SaveList save = JsonUtility.FromJson<SaveList>(saveData);
 
             // リストに代入
             ranks = save.ranks;
@@ -126,34 +133,4 @@ public class RankingManager : MonoBehaviour
             };
         }
     }
-
-    // セーブデータの読み込み
-    void PrefsLoad()
-    {
-        // クリアしてから読み込む
-        ranks.Clear();
-
-        // リストに追加していく　(左が無ければ右が出てくる)
-        ranks.Add(PlayerPrefs.GetFloat("First", 999));
-        ranks.Add(PlayerPrefs.GetFloat("Second", 999));
-        ranks.Add(PlayerPrefs.GetFloat("Third", 999));
-        ranks.Add(PlayerPrefs.GetFloat("Fourth", 999));
-        ranks.Add(PlayerPrefs.GetFloat("Fifth", 999));
-
-    }
-
-    // 記録保持
-    void RankSave()
-    {
-        PlayerPrefs.SetFloat("First", ranks[0]);
-        PlayerPrefs.SetFloat("Second", ranks[1]);
-        PlayerPrefs.SetFloat("Third", ranks[2]);
-        PlayerPrefs.SetFloat("Fourth", ranks[3]);
-        PlayerPrefs.SetFloat("Fifth", ranks[4]);
-
-        // 保存
-        PlayerPrefs.Save();
-    }
-
-
 }
