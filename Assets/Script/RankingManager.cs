@@ -33,6 +33,14 @@ public class RankingManager : MonoBehaviour
         public List<float> ranks;
     }
 
+    [Serializable]  // タイム・名前・カラー選択のデータ
+    public class RankList   // インプットフィールドをまず先に導入
+    {
+        public float time;
+        public string name;
+        public int color;
+    }
+
     private void Start()
     {
         // セーブデータの読み込み
