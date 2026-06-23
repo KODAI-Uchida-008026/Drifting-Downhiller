@@ -12,15 +12,19 @@ public class RankingManager : MonoBehaviour
     // プレイヤーの記録
     public TextMeshProUGUI Your;
 
+    // 最新記録の保存
+    private float resultTime;
+
+    // 記録なし (constで値の固定)
+    private const float Empty = 999;
+
     // リストでデータを管理
     List<float> ranks = new List<float>();
 
-    // 最新記録
-    private float resultTime;
-
-    [Serializable]  // JSONでのデータ管理
+    [Serializable]  // JSONでデータを管理
     public class SaveList
     {
+        // JSONと連動させるリスト
         public List<float> ranks;
     }
 
@@ -36,7 +40,7 @@ public class RankingManager : MonoBehaviour
         }
 
         // 個別で保持　(左が無ければ右が出てくる)
-        resultTime = PlayerPrefs.GetFloat("NewTime", 999);
+        resultTime = PlayerPrefs.GetFloat("NewTime", Empty);
 
         // 並び替え
         ranks.Sort();
@@ -50,7 +54,7 @@ public class RankingManager : MonoBehaviour
         // データ更新
         for (int i = 0; i < ranking.Length; i++)
         {
-            if (ranks[i] == 999)
+            if (ranks[i] == Empty)
             {
                 ranking[i].text = "-----";
             }
@@ -64,7 +68,7 @@ public class RankingManager : MonoBehaviour
         PlayerPrefs.DeleteKey("NewTime");
 
         // 最新記録の確認
-        if (resultTime == 999)
+        if (resultTime == Empty)
         {
             // 記録が無ければ表示なし
             Your.text = "-----";
@@ -117,20 +121,22 @@ public class RankingManager : MonoBehaviour
             // データに変換
             SaveList save = JsonUtility.FromJson<SaveList>(saveData);
 
-            // リストに代入
-            ranks = save.ranks;
+            // もしパスはあってもデータがなかった場合の対策 (フェイルセーフ処理のnullチェック)
+            if (save != null && save.ranks != null)
+            {
+                // 何も問題なければリストに代入
+                ranks = save.ranks;
+            }
+            else
+            {
+                // データが無ければ表示なし
+                ranks = new List<float>() { Empty, Empty, Empty, Empty, Empty };
+            }
         }
         else
         {
             // データが無ければ表示なし
-            ranks = new List<float>()
-            {
-                999,
-                999,
-                999,
-                999,
-                999
-            };
+            ranks = new List<float>() { Empty, Empty, Empty, Empty, Empty };
         }
     }
 }
