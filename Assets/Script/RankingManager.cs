@@ -12,11 +12,6 @@ public class RankingManager : MonoBehaviour
     // プレイヤーの記録
     public TextMeshProUGUI Your;
 
-
-    // インプットフィールドの参照
-    public TMP_InputField nameInput;
-
-
     // 最新記録の保存
     private float resultTime;
 
@@ -31,14 +26,6 @@ public class RankingManager : MonoBehaviour
     {
         // JSONと連動させるリスト
         public List<float> ranks;
-    }
-
-    [Serializable]  // タイム・名前・カラー選択のデータ
-    public class RankList   // インプットフィールドをまず先に導入
-    {
-        public float time;
-        public string name;
-        public int color;
     }
 
     private void Start()
