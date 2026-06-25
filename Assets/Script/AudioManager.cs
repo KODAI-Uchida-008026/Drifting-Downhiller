@@ -15,7 +15,12 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         bgmAudio.Play();
-        seAudio.Play();
+
+        // SEはアサインされていなければ起動しない
+        if (seAudio != null)
+        {
+            seAudio.Stop();
+        }
     }
 
     private void Update()
@@ -31,7 +36,7 @@ public class AudioManager : MonoBehaviour
             return;
 
         // ドリフト起動時であればSEが鳴り すでになっていればさらに鳴らないように制限
-        if (carController.isDrift)
+        if (carController.isDrift == true)
         {
             if (!seAudio.isPlaying)
                 seAudio.Play();

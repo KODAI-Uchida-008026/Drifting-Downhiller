@@ -1088,7 +1088,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   BGM: {fileID: 541535442}
   bgmAudio: {fileID: 541535442}
-  seAudio: {fileID: 541535442}
+  seAudio: {fileID: 0}
   carController: {fileID: 0}
 --- !u!114 &541535444
 MonoBehaviour:
