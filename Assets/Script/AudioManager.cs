@@ -1,36 +1,44 @@
 using UnityEngine;
-using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
     // シーンごとにBGMを変えるためインスペクターで個別に張り付けていく
     [SerializeField] AudioSource BGM;
 
-    // SE用にミキサーを取得しておく
-    public AudioMixer mixer;
+    // オーディオソースの取得
+    public AudioSource bgmAudio;
+    public AudioSource seAudio;
 
     // ドリフト判定を取得するためのカーコントローラースクリプトの参照
     [SerializeField] CarController carController;
+
+    private void Start()
+    {
+        bgmAudio.Play();
+        seAudio.Play();
+    }
 
     private void Update()
     {
         driftSE();
     }
 
-    // 練習シーン・ゲームシーン以外ではSEの判定はしない
+
     public void driftSE()
     {
+        // 練習シーン・ゲームシーン以外ではSEの判定はしない
         if (carController == null)
             return;
 
-        // ドリフト起動時のみSEが鳴る
-        if (carController.isDrift == true)
+        // ドリフト起動時であればSEが鳴り すでになっていればさらに鳴らないように制限
+        if (carController.isDrift)
         {
-            mixer.SetFloat("SE", 1f);
+            if (!seAudio.isPlaying)
+                seAudio.Play();
         }
         else
         {
-            mixer.SetFloat("SE", -80f);
+            seAudio.Stop();
         }
     }
 }

@@ -110,7 +110,7 @@ public class SceneDirector : MonoBehaviour
     private IEnumerator EndingCoroutine()
     {
         // 15秒経過したらタイトル画面に戻る
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(15);
         SceneManager.LoadScene("TitleScene");
     }
 }

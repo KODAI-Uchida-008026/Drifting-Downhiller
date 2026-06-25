@@ -6167,7 +6167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   BGM: {fileID: 1275614638}
-  mixer: {fileID: 24100000, guid: f69e320cfcce0d649ae1e406527c2f30, type: 2}
+  bgmAudio: {fileID: 1275614638}
+  seAudio: {fileID: 1275614638}
   carController: {fileID: 1074857480}
 --- !u!114 &1275614640
 MonoBehaviour:
