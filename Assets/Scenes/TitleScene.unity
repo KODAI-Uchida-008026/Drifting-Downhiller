@@ -719,10 +719,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 260865813}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 65, y: -28.5}
-  m_SizeDelta: {x: 1000, y: 150}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -187, y: 63}
+  m_SizeDelta: {x: 500, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &327707998
 MonoBehaviour:
@@ -744,7 +744,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Escape\u30AD\u30FC\u3092\u62BC\u305B\u3070\u3044\u3064\u3067\u3082\u30B2\u30FC\u30E0\u3092\u7D42\u4E86\u3055\u305B\u3089\u308C\u307E\u3059"
+  m_text: "Escape\u30AD\u30FC\u3092\u62BC\u305B\u3070\n\u3044\u3064\u3067\u3082\u30B2\u30FC\u30E0\u3092\n\u7D42\u4E86\u3055\u305B\u3089\u308C\u307E\u3059"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aca1e47c819ad844487a29fd3a212da8, type: 2}
   m_sharedMaterial: {fileID: -7584708551037398991, guid: aca1e47c819ad844487a29fd3a212da8, type: 2}
@@ -777,7 +777,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 2
+  m_fontStyle: 3
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
