@@ -831,6 +831,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8850900562859752720, guid: 143b4a7d5f7f1b145b28837fe9d72770, type: 3}
       insertIndex: -1
       addedObject: {fileID: 536567882}
+    - targetCorrespondingSourceObject: {fileID: 8850900562859752720, guid: 143b4a7d5f7f1b145b28837fe9d72770, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 536567885}
   m_SourcePrefab: {fileID: 100100000, guid: 143b4a7d5f7f1b145b28837fe9d72770, type: 3}
 --- !u!1 &536567881 stripped
 GameObject:
@@ -947,6 +950,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   BGM: {fileID: 536567882}
+  mixer: {fileID: 0}
+  carController: {fileID: 0}
+--- !u!114 &536567885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536567881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9083237f286d23840b9e688d5be985c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExitKey
+  exitKey: 60
 --- !u!23 &566987167 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 6560168335276259708, guid: 0bf0cc07c87c77849a09963b1239792e, type: 3}

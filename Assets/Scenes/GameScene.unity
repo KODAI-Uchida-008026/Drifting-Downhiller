@@ -5982,6 +5982,7 @@ GameObject:
   - component: {fileID: 1275614637}
   - component: {fileID: 1275614639}
   - component: {fileID: 1275614638}
+  - component: {fileID: 1275614640}
   m_Layer: 0
   m_Name: Course
   m_TagString: Untagged
