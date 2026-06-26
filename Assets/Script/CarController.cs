@@ -30,11 +30,17 @@ public class CarController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         // 速度
-        moveSpeed = 3f;
+        moveSpeed = 18f;
     }
 
     private void Update()
     {
+        // モニターの更新速度に合わせる機能(VSync)を使わせない
+        QualitySettings.vSyncCount = 0;
+
+        // フレームレートの制限 どの環境でも同じように遊べるように
+        Application.targetFrameRate = 60;
+
         // グリップ判定 (曲がりやすさ)
         if (isBrake)
         {
