@@ -24,6 +24,15 @@ public class CarController : MonoBehaviour
     // ドリフト判定
     public bool isDrift;
 
+    private void Awake()
+    {
+        // モニターの更新速度に合わせる機能(VSync)を使わせない
+        QualitySettings.vSyncCount = 0;
+
+        // フレームレートの制限 どの環境でも同じように遊べるように
+        Application.targetFrameRate = 60;
+    }
+
     private void Start()
     {
         // リジットボディの参照
@@ -35,12 +44,6 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
-        // モニターの更新速度に合わせる機能(VSync)を使わせない
-        QualitySettings.vSyncCount = 0;
-
-        // フレームレートの制限 どの環境でも同じように遊べるように
-        Application.targetFrameRate = 60;
-
         // グリップ判定 (曲がりやすさ)
         if (isBrake)
         {
