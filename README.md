@@ -1,5 +1,5 @@
 # Unity 個人開発作品 『Drifting Downhiller』
-
+<img width="2038" height="1148" alt="スクリーンショット 2026-09-12 155849" src="https://github.com/user-attachments/assets/bce4b081-24f7-4782-b4e6-0b7ccc2a3517" />
 **2週間開発プロジェクト**  
 
 ---
@@ -33,6 +33,7 @@
 ---
 
 ## プロジェクト概要 <a id="project-overview"></a>
+<img width="2736" height="1534" alt="スクリーンショット 2026-09-12 160034" src="https://github.com/user-attachments/assets/4400f95d-2714-47f0-af4a-dba59d4635b4" />
 
 | 項目 | 内容 |
 |------|------|
@@ -49,6 +50,7 @@
 ---
 
 ## 完成度レベル <a id="completion-levels"></a>
+<img width="2736" height="1518" alt="スクリーンショット 2026-09-12 160055" src="https://github.com/user-attachments/assets/baf71784-cce0-4e06-a470-4ec051556aac" />
 
 | レベル | 内容 | 達成 |
 |--------|------|------|
@@ -58,8 +60,8 @@
 | **Level 3** | タイマー機能 | [x] |
 | **Level 4** | ランキング機能 | [x] |
 | **Level 5** | リザルト画面 | [x] |
-| **Level 6** | タイトル画面と車の設定画面 | [ ] |
-| **Level 7** | 車のカラーリング | [ ] |
+| **Level 6** | タイトル画面と車の設定画面 | [x] |
+| **Level 7** | 車のカラーリング | [x] |
 | **Level 8** | JSONの実装 | [x] |
 | **Level 9** | BGM・SE・EXITキーの設定 | [x] |
 | **Level 10** | 最終確認 | [x] |
@@ -67,6 +69,7 @@
 ---
 
 ## 使用予定のUnity機能 <a id="unity-features"></a>
+<img width="2736" height="1528" alt="スクリーンショット 2026-09-12 160120" src="https://github.com/user-attachments/assets/87a06e86-ad39-43ef-8031-bc20b3d589c0" />
 
 ☑ = 使用予定（下記チェックボックスに `[x]` を入れる）
 - [x] PlayerController（移動・入力）
@@ -184,6 +187,8 @@ TitleScene　→　PracticeScene　→　GameScene　→　ResultScene​
 | **頑張った点・工夫した点** |ドリフトの操作感（心地よさと難しさ）・JSONによる保存データの永続化と一貫性|
 | **苦労した点・エラーと解決** | コライダーの調整とJSONの実装・インスペクターでのアサインやスクリプトでの責務分離で解決 |
 | **今後追加したいこと** | 実現できなかった名前とカラー選択のJSON保存 |
+
+<img width="2730" height="1532" alt="スクリーンショット 2026-09-12 160815" src="https://github.com/user-attachments/assets/0da451af-0d6a-4bdb-a699-8c3474a14b72" />
 
 ---
 
